@@ -2,12 +2,23 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
+<<<<<<< HEAD
 import userRoutes from "./userRoutes.js"; 
 import contactRoutes from "./contactRoutes.js"; 
+=======
+import userRoutes from "./userRoutes.js"; // Assuming this is correct
+import contactRoutes from "./contact.js"; // Corrected path to contact.js
+>>>>>>> 6de9824e3782d0d1ae37749a6ef049ec7379ad34
 
 const app = express();
 const PORT = 8080;
 
+<<<<<<< HEAD
+=======
+// Middleware
+app.use(cors());
+app.use(bodyParser.json()); // Parses JSON data in requests
+>>>>>>> 6de9824e3782d0d1ae37749a6ef049ec7379ad34
 
 app.use(cors());no
 app.use(bodyParser.json()); 
