@@ -2,15 +2,15 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
-import userRoutes from "./userRoutes.js"; // Fixed path
-import contactRoutes from "./contactRoutes.js"; // Correct path
+import userRoutes from "./userRoutes.js"; // Assuming this is correct
+import contactRoutes from "./contact.js"; // Corrected path to contact.js
 
 // Initialize express app
 const app = express();
 const PORT = 8080;
 
 // Middleware
-app.use(cors());no
+app.use(cors());
 app.use(bodyParser.json()); // Parses JSON data in requests
 
 // MongoDB Connection
