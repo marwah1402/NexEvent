@@ -1,4 +1,4 @@
-import User from "./users.js"; // Ensure the correct relative path
+import User from "./users.js"; 
 
 export const getAllUsers = async (req, res) => {
   try {
