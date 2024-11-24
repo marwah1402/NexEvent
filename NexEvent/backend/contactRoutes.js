@@ -6,13 +6,15 @@ import {
   updateContact,
   deleteContact,
 } from "./contactController.js";
+import { authenticateToken } from './authMiddleware.js'; // Assuming you have an authMiddleware.js for the authenticateToken
 
 const router = express.Router();
 
-router.get("/contacts", getAllContacts);
-router.get("/contacts/:id", getContactById);
-router.post("/contacts", createContact);
-router.put("/contacts/:id", updateContact);
-router.delete("/contacts/:id", deleteContact);
+// Add authenticateToken middleware to secure routes
+router.get("/contacts", authenticateToken, getAllContacts);
+router.get("/contacts/:id", authenticateToken, getContactById);
+router.post("/contacts", authenticateToken, createContact);
+router.put("/contacts/:id", authenticateToken, updateContact);
+router.delete("/contacts/:id", authenticateToken, deleteContact);
 
 export default router;

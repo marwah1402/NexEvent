@@ -1,0 +1,27 @@
+.photo-gallery {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .upload-section {
+    margin-bottom: 20px;
+  }
+  
+  .upload-section input {
+    margin-right: 10px;
+  }
+  
+  .gallery-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .gallery-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
