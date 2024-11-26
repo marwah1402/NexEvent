@@ -1,0 +1,79 @@
+.about-page {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    color: #ffffff; /* Light text color for contrast */
+    background: linear-gradient(to bottom right, #f7b267, #d97aff, #60a3d9); /* Soft orange to lavender to blue */
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff; /* Ensure the header pops against the gradient */
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #f0f0f0; /* Light gray for paragraph text */
+}
+
+.about-sections {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.about-section {
+    text-align: center;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.15); /* Subtle transparent white for cards */
+    border-radius: 10px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px); /* Slight blur for elegance */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-section img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.about-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff; /* Keep headings prominent */
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #e0e0e0; /* Softer gray for readability */
+}
+
+.about-team {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.about-team h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff; /* Match with overall text theme */
+}
+
+.about-team p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #f0f0f0;
+}

@@ -1,28 +1,50 @@
-import React from 'react'
-import  Navbar  from './Components/Navbar/Navbar'
-import Hero from './Components/Hero/Hero' 
-import LoginSignup from './Components/LoginSignup/LoginSignup'
-import CreateEditEvent from './Components/CreateEditEvent/CreateEditEvent'
-import ContactUs from './Components/ContactUs/ContactUs'
-import EventList from './Components/EventList/EventList'
-import EventDetails from './Components/EventDetails/EventDetails'
-import GuestList from './Components/GuestList/GuestList'
-import PhotoGallery from './Components/PhotoGallery/PhotoGallery'
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import LoginSignup from "./pages/LoginSignup/LoginSignup";
+import Events from "./pages/Events/Events";
+import EventDetails from "./pages/EventDetails/EventDetails";
+import Guests from "./pages/Guests/Guests";
+import Gallery from "./pages/Gallery/Gallery";
+import CreateEditEvent from "./pages/CreateEditEvent/CreateEditEvent";
 
-const App = () => {
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Tracks user login status
+
   return (
-   <div>
-    <Navbar/>
-    <Hero/>
-    <LoginSignup/>
-    <CreateEditEvent/>
-    <ContactUs/>
-    <EventList/>
-    <EventDetails/>
-    <GuestList/>
-    <PhotoGallery/>
-   </div>
-  )
+    <Router>
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<LoginSignup setIsLoggedIn={setIsLoggedIn} />} />
+        <Route
+          path="/events"
+          element={isLoggedIn ? <Events /> : <LoginSignup setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/events/:id"
+          element={isLoggedIn ? <EventDetails /> : <LoginSignup setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/guests"
+          element={isLoggedIn ? <Guests /> : <LoginSignup setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/gallery"
+          element={isLoggedIn ? <Gallery /> : <LoginSignup setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/create-event"
+          element={isLoggedIn ? <CreateEditEvent /> : <LoginSignup setIsLoggedIn={setIsLoggedIn} />}
+        />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

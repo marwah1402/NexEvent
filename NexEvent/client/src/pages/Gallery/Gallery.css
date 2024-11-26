@@ -1,0 +1,29 @@
+.gallery {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .gallery h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .gallery input[type="file"] {
+    margin-bottom: 20px;
+  }
+  
+  .gallery .photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .gallery .photos img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  

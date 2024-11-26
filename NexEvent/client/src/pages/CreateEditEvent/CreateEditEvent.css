@@ -1,0 +1,43 @@
+.create-edit-event {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.create-edit-event h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.create-edit-event form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-edit-event form input,
+.create-edit-event form textarea,
+.create-edit-event form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.create-edit-event form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.create-edit-event form button:hover {
+  background-color: #0056b3;
+}

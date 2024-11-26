@@ -1,0 +1,86 @@
+/* Container for login/signup page */
+.login-signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #e3f2fd, #ffffff); /* Elegant light gradient */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Box containing the form */
+  .login-signup-box {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Title for Login/Sign Up */
+  .login-signup-box h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-decoration: underline;
+  }
+  
+  /* Grouped input fields with icons */
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+  }
+  
+  /* Input field styling */
+  .input-group input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+  
+  /* Icon inside input fields */
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+  
+  /* Primary button for form submission */
+  .button-primary {
+    background-color: #6c63ff;
+    color: #ffffff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-primary:hover {
+    background-color: #584dc5;
+  }
+  
+  /* Toggle link for switching between Login and Sign Up */
+  .toggle-text {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    color: #6c63ff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .toggle-text:hover {
+    text-decoration: underline;
+  }
+  
