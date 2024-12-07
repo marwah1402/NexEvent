@@ -8,6 +8,21 @@ const CreateEditEvent = () => {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+  const [guests, setGuests] = useState([]);
+  const [guest, setGuest] = useState({ name: '', email: '', phone: '' });
+
+  const handleAddGuest = () => {
+    if (guest.name && guest.email) {
+      setGuests([...guests, guest]);
+      setGuest({ name: '', email: '', phone: '' });
+    } else {
+      alert('Please fill in both name and email for the guest.');
+    }
+  };
+
+  const handleRemoveGuest = (index) => {
+    setGuests(guests.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +34,7 @@ const CreateEditEvent = () => {
       location,
       description,
       category,
+      guests, // Include guests in the event data
     };
 
     try {
@@ -30,6 +46,13 @@ const CreateEditEvent = () => {
 
       if (response.ok) {
         alert('Event created successfully!');
+        setTitle('');
+        setDate('');
+        setTime('');
+        setLocation('');
+        setDescription('');
+        setCategory('');
+        setGuests([]); // Clear guests after successful submission
       } else {
         const errorData = await response.json();
         alert(`Failed to create event: ${errorData.message}`);
@@ -89,6 +112,43 @@ const CreateEditEvent = () => {
           <option value="Conference">Conference</option>
           <option value="Wedding">Wedding</option>
         </select>
+
+        <h3>Guests</h3>
+        <div className="guest-form">
+          <input
+            type="text"
+            placeholder="Guest Name"
+            value={guest.name}
+            onChange={(e) => setGuest({ ...guest, name: e.target.value })}
+          />
+          <input
+            type="email"
+            placeholder="Guest Email"
+            value={guest.email}
+            onChange={(e) => setGuest({ ...guest, email: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Guest Phone"
+            value={guest.phone}
+            onChange={(e) => setGuest({ ...guest, phone: e.target.value })}
+          />
+          <button type="button" onClick={handleAddGuest}>
+            Add Guest
+          </button>
+        </div>
+
+        <ul>
+          {guests.map((g, index) => (
+            <li key={index}>
+              {g.name} ({g.email}, {g.phone}) 
+              <button type="button" onClick={() => handleRemoveGuest(index)}>
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+
         <button type="submit">Save Event</button>
       </form>
     </div>

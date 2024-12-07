@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node server.js",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
