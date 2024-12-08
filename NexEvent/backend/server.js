@@ -32,9 +32,20 @@ app.use((req, res, next) => {
   next();
 });
 
-// Root Route
+// Root Route with details
 app.get('/', (req, res) => {
-  res.send('Welcome to the backend of NexEvent!');
+  res.send(`
+    <h1>NexEvent Backend</h1>
+    <p>Welcome to the NexEvent backend. Here are the available API endpoints:</p>
+    <ul>
+      <li><a href="/api/auth">/api/auth</a> - Authentication routes</li>
+      <li><a href="/api/events">/api/events</a> - Event-related routes</li>
+      <li><a href="/api/contacts">/api/contacts</a> - Contact-related routes</li>
+      <li><a href="/api/guests">/api/guests</a> - Guest-related routes</li>
+      <li><a href="/api/admin">/api/admin</a> - Admin-specific routes</li>
+    </ul>
+    <p>Refer to the documentation for usage details.</p>
+  `);
 });
 
 // Routes
@@ -44,6 +55,13 @@ app.use('/api/contacts', contactRoutes);
 app.use('/api/guests', guestRoutes);
 app.use('/api/admin', adminRoutes); // Add admin routes
 
+// Log all registered routes
+app._router.stack.forEach((middleware) => {
+  if (middleware.route) { // If it's a route middleware
+    console.log(`Route: ${Object.keys(middleware.route.methods).join(', ').toUpperCase()} ${middleware.route.path}`);
+  }
+});
+
 // Debugging Middleware to Check Route Matching
 app.use((req, res, next) => {
   console.warn(`Route not found: ${req.method} ${req.url}`);
@@ -52,7 +70,7 @@ app.use((req, res, next) => {
 
 // Database connection
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.error('MongoDB connection error:', err));
 

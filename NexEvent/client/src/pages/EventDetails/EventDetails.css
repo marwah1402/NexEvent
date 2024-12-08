@@ -1,34 +1,90 @@
 .event-details {
-  padding: 20px;
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .event-details h1 {
-  color: #333;
-  margin-bottom: 10px;
   text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .event-details p {
   margin: 10px 0;
+  font-size: 1.1rem;
   color: #555;
 }
 
-.event-details button {
-  display: block;
-  margin: 20px auto 0;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+.event-details .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.event-details .button-group button {
+  padding: 10px 15px;
+  font-size: 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.event-details button:hover {
-  background-color: #0056b3;
+.event-details .button-group button:hover {
+  opacity: 0.9;
+}
+
+.event-details .button-group button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.event-details .button-group .delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.event-details .button-group .back-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.event-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.event-details form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #333;
+}
+
+.event-details form input,
+.event-details form textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-details form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.event-details form input:focus,
+.event-details form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }

@@ -11,11 +11,14 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await API.get("/api/events");
+        console.log("Fetching events...");
+        const response = await API.get("/events");
+        console.log("Response data:", response.data);
         setEvents(response.data);
-        setLoading(false);
       } catch (err) {
+        console.error("Error fetching events:", err);
         setError("Failed to load events. Please try again later.");
+      } finally {
         setLoading(false);
       }
     };
@@ -29,14 +32,19 @@ const Events = () => {
   return (
     <div className="events">
       <h1>My Events</h1>
-      <Link to="/create-event" className="create-event-btn">Create New Event</Link>
+      <Link to="/create-event" className="create-event-btn">
+        Create New Event
+      </Link>
       <ul>
         {events.map((event) => (
           <li key={event._id}>
             <h3>{event.title}</h3>
             <p>Date: {new Date(event.date).toLocaleDateString()}</p>
             <p>Location: {event.location}</p>
-            <Link to={`/events/${event._id}`} className="view-btn">View Details</Link>
+            {/* Updated: Use Link for navigation */}
+            <Link to={`/events/${event._id}`} className="view-btn">
+              View Details
+            </Link>
           </li>
         ))}
       </ul>

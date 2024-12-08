@@ -27,6 +27,22 @@ const CreateEditEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('You must be logged in to create an event.');
+      return;
+    }
+
+    let userId = null;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1])); // Decode the token without using jwt-decode
+      userId = payload.id;
+    } catch (error) {
+      console.error('Failed to decode token:', error);
+      alert('Invalid token. Please log in again.');
+      return;
+    }
+
     const eventData = {
       title,
       date,
@@ -34,13 +50,17 @@ const CreateEditEvent = () => {
       location,
       description,
       category,
-      guests, // Include guests in the event data
+      guests,
+      createdBy: userId, // Add the creator ID
     };
 
     try {
       const response = await fetch('http://localhost:8080/api/events', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(eventData),
       });
 
@@ -52,19 +72,20 @@ const CreateEditEvent = () => {
         setLocation('');
         setDescription('');
         setCategory('');
-        setGuests([]); // Clear guests after successful submission
+        setGuests([]);
       } else {
         const errorData = await response.json();
         alert(`Failed to create event: ${errorData.message}`);
       }
     } catch (error) {
+      console.error('Error creating event:', error);
       alert('An error occurred: ' + error.message);
     }
   };
 
   return (
     <div className="create-edit-event">
-      <h2>Create/Edit Event</h2>
+      <h2>Create Event</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -75,14 +96,12 @@ const CreateEditEvent = () => {
         />
         <input
           type="date"
-          placeholder="Event Date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
         />
         <input
           type="time"
-          placeholder="Event Time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
           required
@@ -141,7 +160,7 @@ const CreateEditEvent = () => {
         <ul>
           {guests.map((g, index) => (
             <li key={index}>
-              {g.name} ({g.email}, {g.phone}) 
+              {g.name} ({g.email}, {g.phone})
               <button type="button" onClick={() => handleRemoveGuest(index)}>
                 Remove
               </button>
