@@ -31,9 +31,6 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, isAdmin }) => { // Added isAdmin as
               <NavLink to="/events" className={({ isActive }) => isActive ? "active" : ""}>My Events</NavLink>
             </li>
             <li>
-              <NavLink to="/gallery" className={({ isActive }) => isActive ? "active" : ""}>Gallery</NavLink>
-            </li>
-            <li>
               <NavLink to="/create-event" className={({ isActive }) => isActive ? "active" : ""}>Create Event</NavLink>
             </li>
             {/* Show Admin Dashboard link only for admin users */}
